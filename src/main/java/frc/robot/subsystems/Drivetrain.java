@@ -1,10 +1,12 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.sim.SparkMaxSim;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
+import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
@@ -38,6 +40,12 @@ public class Drivetrain extends SubsystemBase {
         m_rightFollowerConfig.follow(m_rightLeader);
 
     }
+    //Sim Stuff???
+    DCMotor MaxSim = DCMotor.getNEO(1);
+    DCMotor MaxSim2 = DCMotor.getNEO(2);
+
+    SparkMaxSim maxSim = new SparkMaxSim(m_leftLeader, MaxSim);
+    SparkMaxSim maxSim2 = new SparkMaxSim(m_rightLeader, MaxSim2);
 
     public void drive(double d, double rawAxis) {
         // TODO Auto-generated method stub
